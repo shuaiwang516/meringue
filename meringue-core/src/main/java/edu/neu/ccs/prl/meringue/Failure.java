@@ -8,10 +8,12 @@ import java.util.List;
 public final class Failure implements Serializable {
     private static final long serialVersionUID = -5292161279633260125L;
     private final String type;
+    private final String msg;
     private final List<StackTraceElement> trace;
 
     public Failure(Throwable failure, StackTraceCleaner cleaner) {
         this.type = failure.getClass().getName();
+        this.msg = failure.getMessage();
         this.trace = Collections.unmodifiableList(Arrays.asList(cleaner.cleanStackTrace(failure)
                                                                        .toArray(new StackTraceElement[0])));
     }
