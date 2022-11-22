@@ -18,6 +18,18 @@ public final class Failure implements Serializable {
                                                                        .toArray(new StackTraceElement[0])));
     }
 
+    public String getType() {
+        return this.type;
+    }
+
+    public String getMsg() {
+        return this.msg;
+    }
+
+    public List<StackTraceElement> getTrace() {
+        return this.trace;
+    }
+
     @Override
     public int hashCode() {
         int result = type.hashCode();
@@ -41,6 +53,6 @@ public final class Failure implements Serializable {
 
     @Override
     public String toString() {
-        return type + ": " + trace;
+        return type + " - " + msg + ":\n" + trace;
     }
 }
